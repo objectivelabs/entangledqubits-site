@@ -1,0 +1,164 @@
+/* Entangled Qubits - Modern Design System */
+
+:root {
+    /* Color Palette */
+    --bg-dark: #050510;
+    --bg-panel: rgba(20, 20, 40, 0.6);
+    --primary-cyan: #00f0ff;
+    --primary-purple: #bd00ff;
+    --text-main: #ffffff;
+    --text-muted: #a0a0b0;
+    
+    /* Gradients */
+    --glow-gradient: linear-gradient(135deg, var(--primary-cyan), var(--primary-purple));
+    
+    /* Spacing & Layout */
+    --container-width: 800px;
+    --radius-md: 12px;
+    --radius-full: 9999px;
+    
+    /* Animation */
+    --trans-fast: 0.2s ease;
+    --trans-medium: 0.4s ease;
+}
+
+/* Reset & Base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Effect */
+body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(189, 0, 255, 0.15) 0%, transparent 60%);
+    animation: rotateBackground 20s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes rotateBackground {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Main Container */
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    text-align: center;
+    z-index: 1;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    background: var(--bg-panel);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Typography */
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    background: var(--glow-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+}
+
+.tagline {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+/* Form Styling */
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto 3rem auto;
+}
+
+.input-group {
+    flex: 1;
+    position: relative;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    color: var(--text-main);
+    font-size: 1rem;
+    transition: var(--trans-fast);
+}
+
+input[type="email"]:focus {
+    outline: none;
+    border-color: var(--primary-cyan);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+button[type="submit"] {
+    padding: 1rem 2rem;
+    background: var(--glow-gradient);
+    border: none;
+    border-radius: var(--radius-full);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--trans-fast);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(189, 0, 255, 0.3);
+}
+
+/* Footer */
+.footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.social-link {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--trans-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.social-link:hover {
+    color: var(--primary-cyan);
+    text-shadow: 0 0 10px var(--primary-cyan);
+}
